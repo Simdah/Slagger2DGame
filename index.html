@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>Baseball Brawl - 2D Arena Battle Royale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Top HUD -->
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <div class="hud-Alive-pill">
+          <span class="alive-dot"></span>
+          <span>ALIVE: <strong id="alive-count">6/6</strong></span>
+        </div>
+        <div class="hud-kills-pill">
+          <span>OUTS: <strong id="kill-count">0</strong></span>
+        </div>
+      </div>
+
+      <div class="hud-center">
+        <div id="kill-feed"></div>
+        <div id="powerup-banners"></div>
+      </div>
+
+      <div class="hud-right">
+        <button id="audio-toggle" class="icon-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+      </div>
+    </div>
+
+    <!-- Bottom Player Status Bar -->
+    <div id="player-status" class="hidden">
+      <div class="hp-bar-wrap">
+        <div class="hp-bar-fill" id="hud-hp-fill"></div>
+        <span class="hp-bar-text" id="hud-hp-text">100 / 100 HP</span>
+      </div>
+      <div class="ammo-row" id="hud-ammo-row">
+        <div class="ammo-slot ready"><span class="ball-icon">⚾</span></div>
+        <div class="ammo-slot ready"><span class="ball-icon">⚾</span></div>
+        <div class="ammo-slot ready"><span class="ball-icon">⚾</span></div>
+      </div>
+    </div>
+
+    <!-- Start Screen Overlay -->
+    <div id="start-screen" class="overlay-screen">
+      <div class="modal-card">
+        <div class="badge-tag">BATTLE ROYALE ARENA</div>
+        <h1 class="game-title">BASEBALL<span>BRAWL</span></h1>
+        <p class="subtitle">Last Batter Standing Wins! 1 Player vs. 5 AI Sluggers</p>
+
+        <div class="controls-grid">
+          <div class="control-box">
+            <div class="control-icon">🕹️</div>
+            <div class="control-title">MOVE</div>
+            <div class="control-desc"><strong>Left Thumb Stick</strong><br/><span>or WASD / Arrows</span></div>
+          </div>
+          <div class="control-box">
+            <div class="control-icon">⚾</div>
+            <div class="control-title">AIM &amp; PITCH</div>
+            <div class="control-desc"><strong>Drag &amp; Release Right Stick</strong><br/><span>or Mouse + Left Click</span></div>
+          </div>
+          <div class="control-box">
+            <div class="control-icon">🏏</div>
+            <div class="control-title">BAT SWING</div>
+            <div class="control-desc"><strong>Tap SWING Button</strong><br/><span>or Space / Right Click (Deflects Balls!)</span></div>
+          </div>
+        </div>
+
+        <div class="powerup-legend">
+          <span>🌟 <strong>Golden Bat:</strong> Mega Swing</span>
+          <span>🔥 <strong>Fastball:</strong> Fire Pitches</span>
+          <span>🌭 <strong>Hotdog:</strong> +45 HP</span>
+        </div>
+
+        <button id="play-btn" class="primary-btn">⚾ PLAY BALL!</button>
+      </div>
+    </div>
+
+    <!-- End Screen Overlay -->
+    <div id="end-screen" class="overlay-screen hidden">
+      <div class="modal-card end-card">
+        <div id="end-badge" class="badge-tag">GAME OVER</div>
+        <h1 id="end-title" class="game-title">VICTORY!</h1>
+        <p id="end-subtitle" class="subtitle">You are the Grand Slam Champion!</p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">PLACEMENT</span>
+            <strong id="stat-rank" class="stat-value">#1</strong>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">KNOCKOUTS</span>
+            <strong id="stat-kills" class="stat-value">0</strong>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">DAMAGE DEALT</span>
+            <strong id="stat-damage" class="stat-value">0</strong>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">DEFLECTIONS</span>
+            <strong id="stat-deflects" class="stat-value">0</strong>
+          </div>
+        </div>
+
+        <button id="play-again-btn" class="primary-btn">🔄 PLAY AGAIN</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
